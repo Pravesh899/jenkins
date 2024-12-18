@@ -1,5 +1,19 @@
 # install_jenkins
 
+### Ensure the following prerequisites are met:
+
+### Install the AWS dynamic inventory plugin:
+
+```
+pip install boto3 botocore
+```
+
+### Enable the plugin in ansible.cfg:
+ ```
+[inventory]
+enable_plugins = aws_ec2
+```
+
 Ansible role to install and configure Jenkins on Linux (Ubuntu/Debian).
 
 ## Role Variables
