@@ -1,0 +1,6 @@
+---
+- name: Install Jenkins on AWS EC2 instances
+  hosts: tag_Name_JenkinsServer  # Match based on EC2 tag
+  become: yes
+  roles:
+    - role: install_jenkins

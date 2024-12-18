@@ -1,0 +1,6 @@
+---
+jenkins_package_name: "jenkins"
+jenkins_service_name: "jenkins"
+jenkins_home: "/var/lib/jenkins"
+jenkins_config_file: "/etc/default/jenkins"
+aws_ec2_region: "us-east-1"

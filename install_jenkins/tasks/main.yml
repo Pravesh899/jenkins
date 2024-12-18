@@ -1,0 +1,49 @@
+---
+# Ensure the system is updated
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+# Install Java
+- name: Install Java
+  apt:
+    name: "{{ java_package }}"
+    state: present
+
+# Add Jenkins repository key
+- name: Add Jenkins repository key
+  apt_key:
+    url: "{{ jenkins_repo_key_url }}"
+    state: present
+
+# Add Jenkins repository
+- name: Add Jenkins repository
+  apt_repository:
+    repo: "deb {{ jenkins_repo_url }} binary/"
+    state: present
+
+# Install Jenkins
+- name: Install Jenkins
+  apt:
+    name: "{{ jenkins_package_name }}"
+    state: present
+    update_cache: yes
+
+# Start and enable Jenkins service
+- name: Ensure Jenkins is started and enabled
+  service:
+    name: "{{ jenkins_service_name }}"
+    state: started
+    enabled: yes
+
+# Open firewall for Jenkins (optional)
+- name: Open Jenkins port in firewall
+  ufw:
+    rule: allow
+    port: "{{ jenkins_port }}"
+    proto: tcp
+  when: firewall_enabled
+
+# Notify handlers
+- name: Notify restart handler
+  meta: flush_handlers

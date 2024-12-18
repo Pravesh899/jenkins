@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Pravesh Kumar
+  description: Role to install and configure Jenkins on Ubuntu
+  license: MIT
+  min_ansible_version: 2.9
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
+        - jammy
+    - name: Debian
+      versions:
+        - buster
+        - bullseye
+  categories:
+    - automation
+dependencies: []
